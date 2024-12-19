@@ -23,11 +23,14 @@ public class CarSearchController {
     @GetMapping("/{carName}")
     public ResponseEntity<Map<String,Object>> getCar(@PathVariable("carName")String carName){
         logger.info("Serching for car With name: {}", carName);
+
+
+
         Car car = carManagementService.getCarsByCarName(carName);
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Car found successfully");
         response.put("car", car);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
 
     }
 
@@ -39,7 +42,7 @@ public class CarSearchController {
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Cars found successfully");
         response.put("cars", retrievedCars);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/model/{model}")
@@ -50,7 +53,7 @@ public class CarSearchController {
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Cars found By Model successfully");
         response.put("cars", retrievedCars);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @GetMapping("/year/{year}")
     public ResponseEntity<Map<String,Object>> searchCarsByModal(@PathVariable("year") Integer year,@RequestParam(name = "pageNo",defaultValue = "0")int pageNo
@@ -60,7 +63,7 @@ public class CarSearchController {
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Cars found By Model successfully");
         response.put("cars", retrievedCars);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/fuelType/{fuelType}")
@@ -71,7 +74,7 @@ public class CarSearchController {
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Cars found By fuelType successfully");
         response.put("cars", retrievedCars);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @GetMapping("/color/{color}")
     public ResponseEntity<Map<String,Object>> searchCarsByColor(@PathVariable("color") String color, @RequestParam(name = "pageNo",defaultValue = "0")int pageNo
@@ -81,7 +84,7 @@ public class CarSearchController {
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Cars found By color successfully");
         response.put("cars", retrievedCars);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 }
